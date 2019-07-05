@@ -74,7 +74,7 @@ public class Main {
         ArrayList<String> result = new ArrayList<>();
         Stack<String> q = new Stack<>();
         for (int i = 0; i < strings.length; i++) {
-            if (strings[i].matches("\\w")) {
+            if (strings[i].matches("\\w+")) {
                 result.add(strings[i]);
             } else if (strings[i].equals(")")) {
                 String buf;
@@ -159,7 +159,7 @@ public class Main {
                     if (newTemp.startsWith("-")) secondStack.add(String.valueOf(0));
                     for (String l : list) {
                         try {
-                            if (l.matches("\\d")) {
+                            if (l.matches("\\d+")) {
                                 secondStack.add(l);
                             } else if (l.matches("\\w")) {
                                 if (map.containsKey(l)) {
