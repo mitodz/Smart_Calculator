@@ -85,7 +85,7 @@ public class Main {
                 if (q.isEmpty() || strings[i].equals("(") || q.peek().equals("(")) {
                     q.add(strings[i]);
                 } else {
-                    while (!q.isEmpty() && (comparator.compare(strings[i], q.peek()) < 0)) {
+                    while (!q.isEmpty() && (comparator.compare(strings[i], q.peek()) <= 0)) {
                         result.add(q.pop());
                     }
                     q.add(strings[i]);
@@ -122,12 +122,11 @@ public class Main {
            }
         }
         return sb.toString();
-        //return sb.toString().split("(?<=([\\^*/+-[()]]))|(?=([\\^*/+-[()]]))");
     }
 
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner("8 * 3 + 12 * (4 - 2)");//падает на этом выражении
+        Scanner scanner = new Scanner(System.in);//не верный ответ
         outer:
         while (true) {
             String temp = scanner.nextLine();
@@ -161,7 +160,7 @@ public class Main {
                         try {
                             if (l.matches("\\d+")) {
                                 secondStack.add(l);
-                            } else if (l.matches("\\w")) {
+                            } else if (l.matches("\\w+")) {
                                 if (map.containsKey(l)) {
                                     secondStack.add(map.get(l));
                                 } else {
