@@ -1,6 +1,7 @@
 package calculator;
 
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -66,11 +67,11 @@ public class Main {
         }
     }
 
-    public static int process(int x, String o, int y) {
-        if (o.equals("+")) return x + y;
-          else if (o.equals("-")) return x - y;
-          else if (o.equals("*")) return x * y;
-          else return x / y;
+    public static BigInteger process(BigInteger x, String o, BigInteger y) {
+        if (o.equals("+")) return x.add(y);
+          else if (o.equals("-")) return x.subtract(y);
+          else if (o.equals("*")) return x.multiply(y);
+          else return x.divide(y);
     }
 
     public static ArrayList<String> convertInfixToPostfix(String s) {
@@ -130,7 +131,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);//не верный ответ
+        Scanner scanner = new Scanner("112234567890 + 112234567890 * (10000000999 - 999)");//не верный ответ
         outer:
         while (true) {
             String temp = scanner.nextLine();
@@ -158,7 +159,7 @@ public class Main {
                     ArrayList<String> list = convertInfixToPostfix(newTemp);//конвертируем в постфикскную нотацию
                     Stack<String> secondStack = new Stack<>();
                     isShown = false;
-                    int count = 0;
+                    BigInteger count = BigInteger.ZERO;
                     if (newTemp.startsWith("-")) secondStack.add(String.valueOf(0));
                     for (String l : list) {
                         try {
@@ -172,8 +173,8 @@ public class Main {
                                     continue outer;
                                 }
                             } else {
-                                int y = Integer.parseInt(secondStack.pop());
-                                int x = Integer.parseInt(secondStack.pop());
+                                BigInteger y = BigInteger.valueOf(Long.valueOf(secondStack.pop()));
+                                BigInteger x = BigInteger.valueOf(Long.valueOf(secondStack.pop()));
                                 count = process(x, l, y);
                                 secondStack.add(String.valueOf(count));
                             }
@@ -192,7 +193,7 @@ public class Main {
                             System.out.println(map.getOrDefault(s[0], "Unknown variable"));
                             continue;
                         }
-                        System.out.println(Integer.parseInt(s[0]));
+                        System.out.println(BigInteger.valueOf(Long.valueOf(s[0])));
                     } catch (Throwable t) {
                         isShown = true;
                         System.out.println("Invalid expression");

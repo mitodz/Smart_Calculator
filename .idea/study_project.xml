@@ -416,7 +416,7 @@
           <option name="items">
             <list>
               <FrameworkLesson>
-                <option name="currentTaskIndex" value="6" />
+                <option name="currentTaskIndex" value="7" />
                 <option name="customPresentableName" />
                 <option name="id" value="0" />
                 <option name="index" value="1" />
@@ -751,8 +751,8 @@
                       <option name="id" value="5322" />
                       <option name="index" value="7" />
                       <option name="name" value="Multiplication, division and parentheses" />
-                      <option name="record" value="-1" />
-                      <option name="status" value="Failed" />
+                      <option name="record" value="7" />
+                      <option name="status" value="Solved" />
                       <option name="stepikChangeStatus" value="Info and Content changed" />
                       <option name="files">
                         <map>
@@ -804,8 +804,8 @@
                       <option name="index" value="8" />
                       <option name="name" value="Arithmetic operations with large numbers" />
                       <option name="record" value="-1" />
-                      <option name="status" value="Unchecked" />
-                      <option name="stepikChangeStatus" value="Up to date" />
+                      <option name="status" value="Failed" />
+                      <option name="stepikChangeStatus" value="Info and Content changed" />
                       <option name="files">
                         <map>
                           <entry key="test/Test.java">
@@ -829,7 +829,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/calculator/Main.java" />
                                 <option name="text" value="package calculator;&#10;&#10;import java.util.Scanner;&#10;&#10;public class Main {&#10;&#10;    public static final String STRING = &quot;\&quot;-\&quot; means substract;\n&quot; +&#10;            &quot;\&quot;+\&quot; means addition;&quot;;&#10;&#10;    public static boolean isShown = false;&#10;&#10;    public static int operator(String o) {&#10;        if (o.startsWith(&quot;+&quot;) || o.length() % 2 == 0) {&#10;            return 1;&#10;        } else {&#10;            return -1;&#10;        }&#10;    }&#10;&#10;    public static void checkCommand(String s) {&#10;        if (s.equals(&quot;/exit&quot;)) {&#10;            System.out.println(&quot;Bye!&quot;);&#10;            System.exit(0);&#10;        } else if (s.equals(&quot;/help&quot;)) {&#10;            System.out.println(STRING);&#10;            isShown = true;&#10;        } else {&#10;            System.out.println(&quot;Unknown command&quot;);&#10;            isShown = true;&#10;        }&#10;    }&#10;&#10;    public static void main(String[] args) {&#10;        Scanner scanner = new Scanner(System.in);&#10;        while (true) {&#10;            try {&#10;                String[] s = scanner.nextLine().split(&quot;\\s+&quot;);&#10;                if (s.length &gt;= 2) {&#10;                    isShown = false;&#10;                    int count = 0;&#10;                    for (int i = 0; i &lt; s.length - 1; ) {&#10;                        if (s[i].startsWith(&quot;/&quot;)) {&#10;                            checkCommand(s[i]);&#10;                            break;&#10;                        }&#10;                        if (i == 0) {&#10;                            count = Integer.parseInt(s[i]);&#10;                        }&#10;                        i++;&#10;                        count += operator(s[i]) * Integer.parseInt(s[++i]);&#10;                    }&#10;                    if (!isShown) {&#10;                        System.out.println(count);&#10;                    }&#10;                } else {&#10;                    if (s[0].startsWith(&quot;/&quot;)) {&#10;                        checkCommand(s[0]);&#10;                    } else if (!s[0].isEmpty())&#10;                        System.out.println(Integer.parseInt(s[0]));&#10;                }&#10;            } catch (Throwable t) {&#10;                System.out.println(&quot;Invalid expression&quot;);&#10;            }&#10;        }&#10;    }&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
