@@ -131,7 +131,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner("112234567890 + 112234567890 * (10000000999 - 999)");//не верный ответ
+        Scanner scanner = new Scanner(System.in);//не верный ответ
         outer:
         while (true) {
             String temp = scanner.nextLine();
@@ -159,7 +159,7 @@ public class Main {
                     ArrayList<String> list = convertInfixToPostfix(newTemp);//конвертируем в постфикскную нотацию
                     Stack<String> secondStack = new Stack<>();
                     isShown = false;
-                    BigInteger count = BigInteger.ZERO;
+                    BigInteger count;
                     if (newTemp.startsWith("-")) secondStack.add(String.valueOf(0));
                     for (String l : list) {
                         try {
@@ -173,8 +173,8 @@ public class Main {
                                     continue outer;
                                 }
                             } else {
-                                BigInteger y = BigInteger.valueOf(Long.valueOf(secondStack.pop()));
-                                BigInteger x = BigInteger.valueOf(Long.valueOf(secondStack.pop()));
+                                BigInteger y = new BigInteger(secondStack.pop());
+                                BigInteger x = new BigInteger(secondStack.pop());
                                 count = process(x, l, y);
                                 secondStack.add(String.valueOf(count));
                             }
