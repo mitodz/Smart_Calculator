@@ -752,7 +752,7 @@
                       <option name="index" value="7" />
                       <option name="name" value="Multiplication, division and parentheses" />
                       <option name="record" value="-1" />
-                      <option name="status" value="Unchecked" />
+                      <option name="status" value="Failed" />
                       <option name="stepikChangeStatus" value="Info and Content changed" />
                       <option name="files">
                         <map>

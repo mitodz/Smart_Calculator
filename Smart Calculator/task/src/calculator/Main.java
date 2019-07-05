@@ -1,6 +1,10 @@
 package calculator;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
 
@@ -13,11 +17,11 @@ public class Main {
 
     public static HashMap<String, String> map = new HashMap<>();
 
-    public static Comparator<String> comparator = (x, y) -> {
+    public static int compareOperands(String x, String y) {
         if (x.matches("[/*]") && y.matches("[-+]")) return 1;
         if (x.matches("[-+]") && y.matches("[/*]")) return -1;
         return 0;
-    };
+    }
 
     public static String checkExpression(String s) {
         String fail = "Invalid expression";
@@ -85,7 +89,7 @@ public class Main {
                 if (q.isEmpty() || strings[i].equals("(") || q.peek().equals("(")) {
                     q.add(strings[i]);
                 } else {
-                    while (!q.isEmpty() && (comparator.compare(strings[i], q.peek()) <= 0)) {
+                    while (!q.isEmpty() && (compareOperands(strings[i], q.peek()) <= 0) && !q.peek().equals("(")) {
                         result.add(q.pop());
                     }
                     q.add(strings[i]);
